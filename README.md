@@ -1,10 +1,10 @@
-<<<<<<< HEAD
+
 # DoctorSina
 Doctor Sina, a Web &amp; Mobile App, that provides its users with Artificial Intelligence "AI" based functions aiming Healthcare assistance and Distant Medical Support.
 =======
 <p align="center"><img src="./assets/bot.png" width="10%"></p>
 <h1 align="center">Customer Care Bot</h1>
-<p align="center">Customer care bot for ecomm company which can solve faq and chitchat with users, can contact directly to team.</p>
+<p align="center">Customer care bot for E-Health company which can solve faq and chitchat with users, can contact directly to team.</p>
 
 <p align="center">
   <img src="https://img.shields.io/github/pipenv/locked/python-version/horizon733/customer-care-chatbot">
@@ -16,11 +16,12 @@ Doctor Sina, a Web &amp; Mobile App, that provides its users with Artificial Int
 </p>
 
 ## 🛠 Features
-- [x] Basic E-commerce FAQ
+- [x] Basic  FAQ
 - [x] Basic chitchats
 - [x] Out of Scope
 - [x] Contact us form
 - [x] Send Emails
+- [x] chat GPT api
 
 ## ⚡ Quick Setup
 - Initialize a virtual environment via:

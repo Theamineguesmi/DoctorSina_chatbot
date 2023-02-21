@@ -1,6 +1,5 @@
 import os
 
-import mysql.connector
 import time
 import datetime
 import openai
@@ -15,13 +14,6 @@ from rasa_sdk.executor import CollectingDispatcher
 
 from utils.utils import get_html_data, send_email
 
-mydb = mysql.connector.connect(
-  host="localhost",
-  user="root",
-  password="root",
-  database="doctorsina"
-)
-mycursor = mydb.cursor()
 
 ts = time.time()
 timestamp = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
@@ -114,10 +106,7 @@ class ActionSubmitContactForm(Action):
             is_mail_sent = send_email(f"{email.split('@')[0]} contacted us!", "amine.guesmi@esprit.tn", admin_content)
 
             if is_mail_sent:
-                sql = "INSERT INTO chatbot_message (name, email , phone , message , created_at) VALUES (%s, %s , %s , %s , %s)"
-                val = (name, email , phone_number , message , timestamp)
-                mycursor.execute(sql, val)
-                mydb.commit()
+          
                 dispatcher.utter_message(response="utter_mail_success")
             else:
                 dispatcher.utter_message("Sorry, I wasn't able to send mail. Please try again later.")

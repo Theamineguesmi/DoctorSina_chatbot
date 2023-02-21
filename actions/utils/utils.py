@@ -3,20 +3,14 @@ import mimetypes
 import os
 import smtplib
 import traceback
-import mysql.connector
+
 from email.message import EmailMessage
 from email.utils import make_msgid
 from pathlib import Path
 
 logger = logging.getLogger(__name__)
 
-mydb = mysql.connector.connect(
-  host="localhost",
-  user="root",
-  password="root",
-  database="doctorsina"
-)
-mycursor = mydb.cursor()
+
 
 def send_email(subject:str, recipient_email:str, content:str):
     try:

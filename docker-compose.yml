@@ -17,8 +17,6 @@ services:
     - ./actions:/app/actions
     - ./data:/app/data
     command: bash -c "rm -rf models/* && rasa train && rasa run --enable-api --cors \"*\" --debug"
-    ports:
-    - '5007'
     public: true
     networks:
     - all

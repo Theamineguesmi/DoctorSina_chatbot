@@ -11,13 +11,11 @@ Doctor Sina, a Web &amp; Mobile App, that provides its users with Artificial Int
   <img src="https://img.shields.io/github/pipenv/locked/dependency-version/horizon733/customer-care-chatbot/rasa?color=blueviolet&label=Rasa">
 </p>
 
-<p align="center">
-  <img src="https://img.shields.io/github/repo-size/horizon733/customer-care-chatbot">
-</p>
+
 
 ## 🛠 Features
-- [x] Basic  FAQ
-- [x] Basic chitchats
+- [x] FAQ
+- [x] chitchats
 - [x] Out of Scope
 - [x] Contact us form
 - [x] Send Emails
@@ -57,7 +55,4 @@ rasa run --enable-api --cors "*" --debug[Optional] -p {PORT}[optional]
 rasa run actions -p {PORT}[Optional]
 ```
 
-## Tutorial links:
-- [Build customer care chatbot from scratch](https://youtu.be/u6xOgR3jEMU)
-- [Send email from Rasa chatbot](https://youtu.be/UcbNmZA65pw)
 >>>>>>> fbd4695 (deploy chatbot)

@@ -11,12 +11,8 @@ services:
     - ./data:/app/data
     environment:
       MPLCONFIGDIR: "/tmp/"
-    command:
-    - train
-    - run
-    - --enable-api  
-    - --cors   
-    - "*"  
+    command: bash -c "rm -rf models/* && rasa train && rasa run --enable-api --cors \"*\" --debug"
+
 
   action_server:
     image: rasa/rasa-sdk:latest

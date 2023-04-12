@@ -5,6 +5,6 @@ volumes:
 sync:
 - .:/app
 forward:
-- 5007:5007
-reverse:
 - 8080:8080
+reverse:
+- 9000:9000

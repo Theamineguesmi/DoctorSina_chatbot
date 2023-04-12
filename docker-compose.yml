@@ -1,44 +1,27 @@
 version: '3.4'
+
 services:
-
-  duckling-server:
-    image: rasa/duckling:latest
+  rasa:
+    image: rasa/rasa:3.0.8-full
+    networks: ['rasa-network']
     ports:
-    - 8000:8000
-    networks:
-    - all
-
-  rasa-server:
-    image: rasa-bot:latest
-    working_dir: /app
-    build: "./"
-    restart: always
+    - "5005:5005"
     volumes:
-    - ./actions:/app/actions
-    - ./data:/app/data
+    - "./formbot/:/app/"
+    environment:
+      MPLCONFIGDIR: "/tmp/"
     command: bash -c "rm -rf models/* && rasa train && rasa run --enable-api --cors \"*\" --debug"
-    ports:
-    - '5006:5005'
-    public: true
-    networks:
-    - all
 
-  rasa-actions-server:
-    image: rasa-bot:latest
-    working_dir: /app
-    build: "./"
-    restart: always
+  action_server:
+    image: rasa/rasa-sdk:latest
+    networks: ['rasa-network']
+    ports:
+    - "5055:5055"
     volumes:
-    - ./actions:/app/actions
-    - ./utils:/app/utils
-    command: ["rasa", "run", "actions"]
-    ports:
-    - '5055:5055'
-    networks:
-    - all
+    - "./formbot/actions:/app/actions"
 
-networks:
-  all:
-    driver: bridge
-    driver_opts:
-      com.docker.network.enable_ipv6: "true"
+  duckling:
+    image: rasa/duckling:latest
+    networks: ['rasa-network']
+    ports:
+    - "8000:8000"

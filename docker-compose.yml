@@ -7,10 +7,16 @@ services:
     ports:
     - "5005:5005"
     volumes:
-    - "./formbot/:/app/"
+    - ./actions:/app/actions
+    - ./data:/app/data
     environment:
       MPLCONFIGDIR: "/tmp/"
-    command: bash -c "rm -rf models/* && rasa train && rasa run --enable-api --cors \"*\" --debug"
+    command:
+    - train
+    - run
+    - --enable-api  
+    - --cors   
+    - "*"  
 
   action_server:
     image: rasa/rasa-sdk:latest
@@ -18,7 +24,8 @@ services:
     ports:
     - "5055:5055"
     volumes:
-    - "./formbot/actions:/app/actions"
+    - ./actions:/app/actions
+    - ./utils:/app/utils
 
   duckling:
     image: rasa/duckling:latest
